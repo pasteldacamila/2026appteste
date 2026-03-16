@@ -11310,94 +11310,7 @@ const UserPanel = (() => {
                 </div>
                 <p style="font-size:12px;color:#9ca3af;text-align:center">🥟 Pastel da Camilla</p>
               </div>
-            </div>
-<!-- ═══════════ PWA + EMERGÊNCIA ═══════════ -->
-<script>
-/* Reset de emergência — limpa TUDO e reinicia o seed */
-function _resetEmergencia() {
-  if (!confirm('Vai resetar o acesso:
-
-• Desbloquear tentativas
-• Apagar sessão
-• Restaurar senhas para 123456
-
-Confirmar?')) return;
-
-  // Limpar localStorage
-  var del = [];
-  for (var i = 0; i < localStorage.length; i++) {
-    var k = localStorage.key(i);
-    if (k && (k.startsWith('login_tries_') || k.startsWith('pc_users') ||
-        k === 'pc_schema_ver' || k === 'pc_session_v1' || k === 'auth_log')) del.push(k);
-  }
-  del.forEach(function(k){ localStorage.removeItem(k); });
-
-  // Limpar IDB
-  function fim() {
-    alert('✅ Reset OK!
-
-Entre com:
-  camila / 123456
-  admin / 123456
-  derikRamos / 123456');
-    location.reload(true);
-  }
-  try {
-    var r = indexedDB.open('pastelcamila');
-    r.onsuccess = function(e) {
-      var db = e.target.result, v = db.version; db.close();
-      var r2 = indexedDB.open('pastelcamila', v);
-      r2.onsuccess = function(e2) {
-        var db2 = e2.target.result;
-        if (db2.objectStoreNames.contains('auth_users')) {
-          var tx = db2.transaction('auth_users','readwrite');
-          tx.objectStore('auth_users').clear();
-          tx.oncomplete = function(){ db2.close(); fim(); };
-          tx.onerror = function(){ db2.close(); fim(); };
-        } else { db2.close(); fim(); }
-      };
-      r2.onerror = function(){ fim(); };
-    };
-    r.onerror = function(){ fim(); };
-  } catch(e){ fim(); }
-}
-
-/* Service Worker */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').catch(function(){});
-  });
-}
-
-/* Banner instalar PWA */
-var _dPr = null;
-window.addEventListener('beforeinstallprompt', function(e) {
-  e.preventDefault(); _dPr = e;
-  setTimeout(function(){
-    if (!localStorage.getItem('pwa-ok')) {
-      var b = document.createElement('div');
-      b.id = '_pwab';
-      b.style.cssText = 'position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1a0c06;color:#fff;padding:11px 16px;border-radius:12px;display:flex;align-items:center;gap:10px;z-index:9998;box-shadow:0 8px 30px rgba(0,0,0,.6);font-family:inherit;font-size:.78rem;border:1px solid rgba(245,194,0,.2);max-width:90vw';
-      b.innerHTML = '<span style="font-size:1.3rem">🥟</span><div><div style="font-weight:800">Instalar App</div><div style="color:rgba(255,255,255,.5);font-size:.68rem">Offline · Tela inicial</div></div><button onclick="window._instPWA()" style="background:#c8181e;color:#fff;border:none;border-radius:7px;padding:7px 12px;font-size:.72rem;font-weight:800;cursor:pointer;font-family:inherit">📲 Instalar</button><button onclick="document.getElementById('_pwab').remove()" style="background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:6px;padding:5px 8px;cursor:pointer;font-family:inherit">✕</button>';
-      document.body.appendChild(b);
-    }
-  }, 8000);
-});
-window._instPWA = function(){
-  if (!_dPr) return;
-  _dPr.prompt();
-  _dPr.userChoice.then(function(r){
-    if (r.outcome==='accepted'){var e=document.getElementById('_pwab');if(e)e.remove();}
-    _dPr=null;
-  });
-};
-window.addEventListener('appinstalled',function(){
-  localStorage.setItem('pwa-ok','1');_dPr=null;
-  if(typeof showToast==='function')showToast('✅ App instalado!','ok');
-});
-</script>
-
-</body></html>`
+            </div></body></html>`
         }).catch(()=>{});
       }
       closeModal();
@@ -23001,5 +22914,72 @@ EventBus.on('db:ready', () => {
 
 
 </script>
+
+<!-- ═══════════ PWA + EMERGÊNCIA ═══════════ -->
+<script>
+function _resetEmergencia() {
+  if (!confirm('Vai resetar o acesso:\n\n• Desbloquear tentativas\n• Apagar sessão\n• Restaurar senhas para 123456\n\nConfirmar?')) return;
+  var del = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var k = localStorage.key(i);
+    if (k && (k.startsWith('login_tries_') || k.startsWith('pc_users') ||
+        k === 'pc_schema_ver' || k === 'pc_session_v1' || k === 'auth_log')) del.push(k);
+  }
+  del.forEach(function(k){ localStorage.removeItem(k); });
+  function fim() {
+    alert('\u2705 Reset OK!\n\nEntre com:\n  camila / 123456\n  admin / 123456\n  derikRamos / 123456');
+    location.reload(true);
+  }
+  try {
+    var r = indexedDB.open('pastelcamila');
+    r.onsuccess = function(e) {
+      var db = e.target.result, v = db.version; db.close();
+      var r2 = indexedDB.open('pastelcamila', v);
+      r2.onsuccess = function(e2) {
+        var db2 = e2.target.result;
+        if (db2.objectStoreNames.contains('auth_users')) {
+          var tx = db2.transaction('auth_users','readwrite');
+          tx.objectStore('auth_users').clear();
+          tx.oncomplete = function(){ db2.close(); fim(); };
+          tx.onerror = function(){ db2.close(); fim(); };
+        } else { db2.close(); fim(); }
+      };
+      r2.onerror = function(){ fim(); };
+    };
+    r.onerror = function(){ fim(); };
+  } catch(e){ fim(); }
+}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  });
+}
+var _dPr = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault(); _dPr = e;
+  setTimeout(function(){
+    if (!localStorage.getItem('pwa-ok')) {
+      var b = document.createElement('div');
+      b.id = '_pwab';
+      b.style.cssText = 'position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1a0c06;color:#fff;padding:11px 16px;border-radius:12px;display:flex;align-items:center;gap:10px;z-index:9998;box-shadow:0 8px 30px rgba(0,0,0,.6);font-family:inherit;font-size:.78rem;border:1px solid rgba(245,194,0,.2);max-width:90vw';
+      b.innerHTML = '<span style="font-size:1.3rem">\uD83E\uDD5F</span><div><div style="font-weight:800">Instalar App</div><div style="color:rgba(255,255,255,.5);font-size:.68rem">Offline \u00B7 Tela inicial</div></div><button onclick="window._instPWA()" style="background:#c8181e;color:#fff;border:none;border-radius:7px;padding:7px 12px;font-size:.72rem;font-weight:800;cursor:pointer;font-family:inherit">\uD83D\uDCF2 Instalar</button><button onclick="document.getElementById(\'_pwab\').remove()" style="background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:6px;padding:5px 8px;cursor:pointer">\u2715</button>';
+      document.body.appendChild(b);
+    }
+  }, 8000);
+});
+window._instPWA = function(){
+  if (!_dPr) return;
+  _dPr.prompt();
+  _dPr.userChoice.then(function(r){
+    if (r.outcome==='accepted'){var e=document.getElementById('_pwab');if(e)e.remove();}
+    _dPr=null;
+  });
+};
+window.addEventListener('appinstalled',function(){
+  localStorage.setItem('pwa-ok','1');_dPr=null;
+  if(typeof showToast==='function')showToast('\u2705 App instalado!','ok');
+});
+</script>
+
 </body>
 </html>
