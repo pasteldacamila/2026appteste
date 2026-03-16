@@ -634,6 +634,201 @@ ul{list-style:none}
   .ph-left p{font-size:.72rem}
 }
 
+/* ════════════════════════════════════════════
+   GESTÃO DO GERENTE — ESTILOS
+════════════════════════════════════════════ */
+
+/* Header da sessão */
+.ger-header {
+  background: linear-gradient(135deg,#1a0c06 0%,#3d1a00 35%,var(--red) 100%);
+  border-radius:var(--r);padding:26px 24px 22px;margin-bottom:20px;
+  position:relative;overflow:hidden;color:#fff;
+  box-shadow:0 8px 32px rgba(200,24,30,.2);
+}
+.ger-header::before {
+  content:'🏢';position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  font-size:5rem;opacity:.1;pointer-events:none;
+}
+.ger-header-stripe {
+  height:4px;background:linear-gradient(90deg,var(--gold),#ffdc5c,var(--gold));
+  border-radius:4px;margin-bottom:16px;
+}
+.ger-header h1 {font-size:1.4rem;font-weight:900;letter-spacing:-.3px;margin-bottom:4px;}
+.ger-header p  {font-size:.8rem;color:rgba(255,255,255,.65);margin:0;}
+.ger-aviso {
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(245,194,0,.18);border:1px solid rgba(245,194,0,.4);
+  color:var(--gold);font-size:.7rem;font-weight:800;letter-spacing:.4px;
+  padding:5px 14px;border-radius:20px;margin-top:12px;
+}
+
+/* Resumo executivo */
+.ger-resumo-grid {
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;
+}
+.ger-resumo-item {
+  border-radius:var(--rs);padding:14px 12px;border:1.5px solid var(--border);
+  background:var(--surface);text-align:center;
+}
+.ger-resumo-val {font-size:1.35rem;font-weight:900;margin-bottom:4px;}
+.ger-resumo-lbl {font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text2);}
+.ger-resumo-item.ok    .ger-resumo-val {color:var(--green);}
+.ger-resumo-item.pend  .ger-resumo-val {color:var(--gold);}
+.ger-resumo-item.alerta .ger-resumo-val {color:var(--red);}
+.ger-resumo-item.info  .ger-resumo-val {color:var(--blue);}
+
+/* Seção header interno */
+.ger-sec-title {
+  font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:1.2px;
+  color:var(--text2);padding:0 0 8px;border-bottom:1px solid var(--border);
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.ger-sec-title::after {content:'';flex:1;height:1px;background:var(--border);}
+
+/* Alertas */
+.ger-alert {
+  display:flex;align-items:flex-start;gap:10px;padding:11px 14px;
+  border-radius:var(--rs);margin-bottom:7px;font-size:.8rem;
+}
+.ger-alert.critico {background:rgba(220,38,38,.08);border:1.5px solid rgba(220,38,38,.3);color:#991b1b;}
+.ger-alert.aviso   {background:rgba(245,158,11,.08);border:1.5px solid rgba(245,158,11,.3);color:#92400e;}
+.ger-alert.info    {background:rgba(37,99,235,.07);border:1.5px solid rgba(37,99,235,.2);color:#1e3a8a;}
+.ger-alert-txt {font-weight:600;flex:1;}
+
+/* Checklist items */
+.ger-cl-item {
+  display:flex;align-items:flex-start;gap:10px;padding:10px 14px;
+  border-radius:var(--rs);border:1.5px solid var(--border);margin-bottom:6px;
+  background:var(--surface);transition:all .15s;
+}
+.ger-cl-item.critico {border-left:3px solid var(--red);}
+.ger-cl-item.status-ok  {background:rgba(22,163,74,.05);border-color:rgba(22,163,74,.3);}
+.ger-cl-item.status-nok {background:rgba(220,38,38,.05);border-color:rgba(220,38,38,.35);}
+.ger-cl-item.status-na  {opacity:.55;}
+.ger-cl-label {flex:1;font-size:.8rem;color:var(--text);font-weight:600;padding-top:2px;}
+.ger-cl-critico-tag {
+  font-size:.58rem;font-weight:900;background:rgba(200,24,30,.08);color:var(--red);
+  border:1px solid rgba(200,24,30,.2);padding:2px 7px;border-radius:10px;
+  text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;
+}
+.ger-cl-btns {display:flex;gap:4px;flex-shrink:0;}
+.ger-cl-btn {
+  padding:4px 9px;font-size:.67rem;font-weight:800;border-radius:6px;
+  border:1.5px solid var(--border);background:var(--g100);color:var(--text2);
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.ger-cl-btn.sel-ok  {background:#dcfce7;border-color:#16a34a;color:#16a34a;}
+.ger-cl-btn.sel-nok {background:#fee2e2;border-color:#dc2626;color:#dc2626;}
+.ger-cl-btn.sel-na  {background:var(--g200);border-color:var(--g400);color:var(--g600);}
+.ger-cl-obs {
+  width:100%;margin-top:7px;padding:7px 10px;font-size:.78rem;
+  border-radius:7px;border:1.5px solid var(--red);background:var(--surface);
+  color:var(--text);resize:vertical;min-height:38px;
+}
+.ger-cl-obs-wrap {display:none;margin-top:5px;}
+.ger-cl-obs-wrap.visible {display:block;}
+
+/* Turnos */
+.ger-turno-grid {display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}
+@media(max-width:660px){.ger-turno-grid{grid-template-columns:1fr;}}
+.ger-turno-bloco {border-radius:var(--r);padding:16px 18px;}
+.ger-turno-bloco.manha {background:linear-gradient(135deg,rgba(245,158,11,.09),rgba(245,158,11,.02));border:1.5px solid rgba(245,158,11,.28);}
+.ger-turno-bloco.noite {background:linear-gradient(135deg,rgba(99,102,241,.09),rgba(99,102,241,.02));border:1.5px solid rgba(99,102,241,.28);}
+.ger-turno-title {font-size:.86rem;font-weight:900;margin-bottom:3px;}
+.ger-turno-bloco.manha .ger-turno-title {color:#d97706;}
+.ger-turno-bloco.noite .ger-turno-title {color:#818cf8;}
+.ger-turno-sub {font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text2);margin-bottom:12px;}
+.ger-turno-list {list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px;}
+.ger-turno-list li {font-size:.77rem;color:var(--text);display:flex;align-items:flex-start;gap:6px;}
+.ger-turno-list li::before {content:'→';font-weight:900;flex-shrink:0;margin-top:1px;}
+.ger-turno-bloco.manha .ger-turno-list li::before {color:#d97706;}
+.ger-turno-bloco.noite .ger-turno-list li::before {color:#818cf8;}
+
+/* Pendências */
+.ger-pend-card {
+  border-radius:var(--rs);padding:13px 15px;border:1.5px solid var(--border);
+  background:var(--surface);margin-bottom:9px;
+}
+.ger-pend-card.prio-critica {border-left:4px solid #dc2626;}
+.ger-pend-card.prio-alta    {border-left:4px solid #ea580c;}
+.ger-pend-card.prio-media   {border-left:4px solid #f59e0b;}
+.ger-pend-card.prio-baixa   {border-left:4px solid #6b7280;}
+.ger-pend-title {font-size:.84rem;font-weight:800;color:var(--text);margin-bottom:4px;}
+.ger-pend-desc  {font-size:.74rem;color:var(--text2);margin-bottom:7px;}
+.ger-pend-meta  {display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+.ger-tag {
+  font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px;
+  padding:2px 8px;border-radius:10px;border:1px solid;
+}
+.ger-tag.cat      {background:var(--blue-lt);border-color:var(--blue);color:var(--blue);}
+.ger-tag.pend     {background:#fef3c7;border-color:#d97706;color:#d97706;}
+.ger-tag.andamento{background:#e0e7ff;border-color:#4f46e5;color:#4f46e5;}
+.ger-tag.resolvido{background:var(--green-lt);border-color:var(--green);color:var(--green);}
+.ger-tag.critica-t{background:#fee2e2;border-color:#dc2626;color:#dc2626;}
+.ger-tag.alta-t   {background:#ffedd5;border-color:#ea580c;color:#ea580c;}
+.ger-tag.media-t  {background:#fef3c7;border-color:#d97706;color:#d97706;}
+.ger-tag.baixa-t  {background:var(--g100);border-color:var(--g400);color:var(--g600);}
+
+/* Itens faltando */
+.ger-item-card {
+  border-radius:var(--rs);padding:11px 14px;border:1.5px solid var(--border);
+  background:var(--surface);margin-bottom:7px;display:flex;align-items:center;gap:11px;
+}
+.ger-item-urgencia {width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.ger-item-urgencia.normal       {background:var(--g400);}
+.ger-item-urgencia.urgente      {background:#f59e0b;}
+.ger-item-urgencia.muito-urgente{background:#dc2626;animation:gerPulse 1.5s ease infinite;}
+@keyframes gerPulse{0%,100%{box-shadow:0 0 0 3px rgba(220,38,38,.25)}50%{box-shadow:0 0 0 6px rgba(220,38,38,.08)}}
+
+/* Histórico */
+.ger-tabs {display:flex;gap:4px;flex-wrap:wrap;border-bottom:2px solid var(--border);margin-bottom:14px;}
+.ger-tab {
+  padding:7px 14px;font-size:.77rem;font-weight:700;cursor:pointer;
+  color:var(--text2);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;
+}
+.ger-tab:hover {color:var(--text);}
+.ger-tab.act   {color:var(--red);border-bottom-color:var(--red);}
+.ger-hist-card {border-radius:var(--rs);border:1.5px solid var(--border);background:var(--surface);margin-bottom:9px;overflow:hidden;}
+.ger-hist-hd   {display:flex;align-items:center;gap:9px;padding:11px 14px;cursor:pointer;transition:background .15s;user-select:none;}
+.ger-hist-hd:hover {background:var(--g50);}
+.ger-hist-tipo {font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;padding:2px 8px;border-radius:8px;}
+.ger-hist-body {display:none;border-top:1px solid var(--border);padding:11px 14px;background:var(--g50);}
+.ger-hist-body.open {display:block;}
+
+/* Form grid */
+.ger-form-grid {display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+@media(max-width:580px){.ger-form-grid{grid-template-columns:1fr;}}
+
+/* Contatos */
+.ger-contato-card {
+  display:flex;align-items:center;gap:13px;padding:13px 15px;
+  border-radius:var(--rs);border:1.5px solid var(--border);background:var(--surface);margin-bottom:9px;
+}
+.ger-contato-avatar {
+  width:42px;height:42px;border-radius:50%;background:rgba(200,24,30,.09);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+}
+.ger-contato-name {font-size:.84rem;font-weight:800;color:var(--text);}
+.ger-contato-num  {font-size:.78rem;color:var(--text2);font-family:monospace;}
+.ger-contato-btn  {
+  padding:7px 12px;background:var(--green);color:#fff;font-size:.7rem;font-weight:800;
+  border:none;border-radius:8px;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;transition:opacity .2s;
+}
+.ger-contato-btn:hover {opacity:.85;}
+
+/* Status gerente ativo */
+.ger-gerente-card {
+  border-radius:var(--r);padding:18px 20px;border:2px solid var(--border);
+  background:var(--surface);margin-bottom:18px;transition:all .3s;
+}
+.ger-gerente-card.ativo {
+  border-color:var(--red);
+  background:linear-gradient(135deg,rgba(200,24,30,.05),rgba(200,24,30,.02));
+  box-shadow:0 0 0 3px rgba(200,24,30,.1),var(--shm);
+}
+
+/* Print */
 /* Print: ocultar sidebar e topbar */
 @media print{
   #sidebar,#topbar,#footer{display:none!important}
@@ -1407,71 +1602,309 @@ textarea.fc{resize:vertical;min-height:80px}
   color:var(--g500);
 }
 
-/* ── RESPONSIVO MOBILE COMPLETO ── */
-@media(max-width:640px){
-  :root{--sidebar:0px}
-  #sidebar{
-    position:fixed;top:0;left:0;height:100%;
-    width:260px!important;min-width:260px!important;
-    transform:translateX(-100%);
-    z-index:500;transition:transform .3s ease;
-  }
-  #sidebar.mobile-open{transform:translateX(0)}
-  #content{padding:12px;padding-bottom:80px}
-  .g2,.g3,.g4{grid-template-columns:1fr!important}
-  .ph{flex-direction:column;gap:10px}
-  .ph-right{flex-wrap:wrap;justify-content:flex-start}
-  .kpi{padding:12px}
-  .kpi-val{font-size:1.6rem}
-  .card{padding:14px}
-  .card-hd{flex-direction:column;align-items:flex-start;gap:8px}
-  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  table{min-width:500px}
-  .btn{padding:10px 14px;font-size:.82rem}
-  h2{font-size:1.1rem}
-  .tabs{gap:3px}
-  .tab{padding:6px 10px;font-size:.72rem}
-  #topbar{padding:0 10px;gap:6px}
-  .tb-ico{width:30px;height:30px;font-size:.85rem}
-  #cl-actions{gap:6px}
-  #cl-actions .btn{flex:1;min-width:0;font-size:.78rem;padding:10px 8px}
+/* ════════════════════════════════════════════════════════
+   RESPONSIVO — iPhone 15/16/17 + Android + Tablet
+   Escrito do zero. Cirúrgico. Sem conflito.
+════════════════════════════════════════════════════════ */
+
+/* Sem zoom automático em inputs iOS */
+@media(max-width:768px){
+  input,select,textarea{font-size:16px!important}
 }
 
-/* iOS: evita zoom automático nos inputs */
-@media(max-width:768px){input,select,textarea{font-size:16px!important}}
+/* Scroll suave iOS em todo o app */
+*{
+  -webkit-tap-highlight-color:transparent;
+  box-sizing:border-box;
+}
+a,button,.btn,.tab,.nav-item,.filter-chip,.fchip{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
 
+/* Sem scroll horizontal global */
+html,body{max-width:100vw;overflow-x:hidden}
+img,video,canvas,svg{max-width:100%;height:auto}
+.page,.card,.card-hd,.ph,.ph-right{
+  max-width:100%;
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+
+/* ── Tablet (641–960px) ── */
 @media(min-width:641px) and (max-width:960px){
   :root{--sidebar:180px}
   .g3,.g4{grid-template-columns:repeat(2,1fr)!important}
   #content{padding:14px}
 }
 
+/* ── Desktop ── */
 @media(min-width:961px){
   .page{max-width:1400px;margin:0 auto}
 }
 
-/* ── PREVENT HORIZONTAL SCROLL ── */
-*{box-sizing:border-box}
-.page,.card,.card-hd,.ph,.ph-right{max-width:100%;overflow-wrap:break-word}
-img,video,canvas,svg{max-width:100%}
+/* ════════════════════════════════════════════════════════
+   MOBILE ≤640px — CORREÇÃO TOTAL
+════════════════════════════════════════════════════════ */
+@media(max-width:640px){
 
-/* ── SAFE AREA (iPhone notch/home indicator) ── */
+  /* Variáveis */
+  :root{
+    --sidebar:0px;
+    --header:52px;
+  }
+
+  /* Safe area iOS topo (Dynamic Island) */
+  html{padding-top:env(safe-area-inset-top,0px)}
+
+  /* ── SIDEBAR: drawer lateral
+     CORREÇÃO: JS usa .mob-open, então CSS tem de responder a .mob-open.
+     Também mantemos .mobile-open como alias por segurança.
+     Forçamos 270px com texto — nunca modo slim (só ícones) no mobile. ── */
+  #sidebar{
+    position:fixed;
+    top:0;left:0;
+    width:270px!important;
+    min-width:270px!important;
+    height:100dvh;
+    transform:translateX(-100%);
+    z-index:600;
+    transition:transform .28s cubic-bezier(.4,0,.2,1);
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding-top:max(12px, env(safe-area-inset-top,0px));
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  #sidebar.mob-open,
+  #sidebar.mobile-open{
+    transform:translateX(0);
+    box-shadow:6px 0 40px rgba(0,0,0,.6);
+  }
+  /* Forçar texto visível — nunca slim no mobile */
+  #sidebar.slim .nav-lbl,
+  #sidebar.slim .brand-txt,
+  #sidebar.slim .sec-lbl,
+  #sidebar.slim .nav-badge{display:block!important}
+  #sidebar.slim .nav-item{
+    justify-content:flex-start!important;
+    padding:10px 14px!important;
+  }
+  #sidebar.slim .brand{
+    justify-content:flex-start!important;
+    padding:14px 16px!important;
+  }
+  .nav-item{min-height:44px;padding:10px 14px;font-size:.88rem}
+  .sb-foot{padding:10px 12px;padding-bottom:max(10px,env(safe-area-inset-bottom,0px))}
+
+  /* ── TOPBAR: 1 linha, sem overflow
+     CORREÇÃO: título quebrando em 3 linhas, ícones cortados ── */
+  #topbar{
+    padding:0 10px;
+    gap:4px;
+    height:var(--header);
+    overflow:hidden;
+    flex-wrap:nowrap;
+  }
+  #mob-menu-btn{
+    display:flex!important;
+    flex-shrink:0;
+    width:40px;height:40px;
+    min-width:40px;
+  }
+  /* Título: UMA linha, reticências */
+  .tb-title{
+    font-size:.82rem;
+    font-weight:800;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    min-width:0;
+    flex:1;
+  }
+  /* Ocultar o que não cabe no mobile */
+  .tb-pill,
+  .tb-clock,
+  .op-pills-topbar,
+  #shift-pill{display:none!important}
+  /* Ícones ação */
+  .tb-ico{
+    width:36px;height:36px;
+    min-width:36px;
+    font-size:.9rem;
+    flex-shrink:0;
+  }
+  /* Avatar: mostrar só bolinha */
+  #login-user-info{flex-shrink:0}
+  .user-avatar{width:32px;height:32px;font-size:.7rem;flex-shrink:0}
+  #login-name-lbl,#login-role-lbl{display:none}
+
+  /* ── CONTEÚDO ── */
+  #content{
+    padding:10px;
+    padding-bottom:calc(80px + env(safe-area-inset-bottom,20px));
+    overflow-x:hidden;
+    min-width:0;
+  }
+
+  /* ── GRIDS: 1 coluna sempre ── */
+  .g2,.g3,.g4,.ga{
+    grid-template-columns:1fr!important;
+    gap:10px;
+  }
+
+  /* ── CARDS ── */
+  .card{padding:12px;border-radius:10px;min-width:0;overflow:hidden}
+  .card-hd{flex-direction:column;align-items:flex-start;gap:6px}
+  .card-title{font-size:.68rem}
+
+  /* ── KPIs ── */
+  .kpi{padding:12px;min-width:0}
+  .kpi-val{font-size:1.65rem}
+  .kpi-lbl{font-size:.66rem}
+  .kpi-op{padding:10px 12px}
+  .kpi-op-val{font-size:1.2rem}
+  .fin-kpi-grid{grid-template-columns:repeat(2,1fr)!important;gap:8px}
+
+  /* ── CHECKLIST: CORREÇÃO TOTAL
+     Problema foto: texto cortado à esquerda, botões saindo da tela.
+     Solução: layout em coluna, botões 100% da largura. ── */
+  .cl-item{
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:10px!important;
+    padding:12px 10px!important;
+    width:100%;
+    overflow:hidden;
+  }
+  .cl-txt{
+    flex:unset!important;
+    width:100%!important;
+    font-size:.85rem!important;
+    line-height:1.5!important;
+    white-space:normal!important;
+    word-break:break-word;
+  }
+  .cl-ctrls{
+    width:100%!important;
+    display:flex!important;
+    gap:8px!important;
+    margin-left:0!important;
+    flex-shrink:0!important;
+  }
+  .ck-btn{
+    flex:1!important;
+    min-height:44px!important;
+    font-size:.82rem!important;
+    font-weight:800!important;
+    padding:8px 6px!important;
+    border-radius:8px!important;
+    text-align:center;
+    white-space:nowrap;
+  }
+  #cl-actions{gap:6px;flex-wrap:wrap}
+  #cl-actions .btn{
+    flex:1;min-width:120px;
+    font-size:.78rem;
+    padding:10px 8px;
+    min-height:42px;
+  }
+
+  /* ── TABS: scroll horizontal, sem quebra ── */
+  .tabs,
+  #rh-tabs,#cmd-tabs,#imp-tabs,#sup-tabs,
+  #cl-tabs,#mesa-tabs,#frit-tabs,#gav-tabs,
+  #esc-tabs,#emb-tabs,#cx-tabs,#ger-tabs{
+    overflow-x:auto!important;
+    flex-wrap:nowrap!important;
+    -webkit-overflow-scrolling:touch;
+    gap:4px;
+    padding-bottom:3px;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar,
+  #rh-tabs::-webkit-scrollbar,
+  #cmd-tabs::-webkit-scrollbar{display:none}
+  .tab{
+    flex-shrink:0!important;
+    white-space:nowrap!important;
+    min-height:36px;
+    padding:6px 12px;
+    font-size:.72rem;
+  }
+
+  /* ── TABELAS ── */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px}
+  table{min-width:480px;font-size:.75rem}
+  th,td{padding:8px 10px}
+
+  /* ── BOTÕES ── */
+  .btn{min-height:42px;padding:10px 14px;font-size:.82rem;border-radius:9px}
+
+  /* ── PAGE HEADER ── */
+  .ph{flex-direction:column;gap:10px;margin-bottom:12px}
+  .ph-left h2{font-size:.95rem}
+  .ph-left p{font-size:.72rem}
+  .ph-right{width:100%;flex-wrap:wrap;gap:6px}
+  .ph-right .btn{flex:1;min-width:0;justify-content:center}
+
+  /* ── MODAL: bottom-sheet no iPhone ── */
+  .mo{
+    position:fixed!important;
+    bottom:0!important;left:0!important;right:0!important;top:auto!important;
+    width:100%!important;max-width:100%!important;
+    max-height:90dvh;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    border-radius:20px 20px 0 0!important;
+    padding:20px 16px!important;
+    padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))!important;
+    margin:0!important;
+  }
+  .mo-hd{flex-wrap:wrap;gap:6px}
+
+  /* ── FILTROS ── */
+  .filter-bar{flex-wrap:wrap;gap:6px}
+  .filter-chip,.fchip{min-height:34px;font-size:.7rem;padding:5px 10px}
+
+  /* ── FOOTER ── */
+  #footer{
+    height:auto;
+    padding:6px 10px;
+    padding-bottom:calc(6px + env(safe-area-inset-bottom,0px));
+    flex-wrap:wrap;gap:4px;font-size:.58rem;
+  }
+  #footer .fdot{display:none}
+
+  /* ── TOAST ── */
+  .toast{
+    max-width:92vw;font-size:.78rem;
+    bottom:calc(70px + env(safe-area-inset-bottom,0px));
+  }
+
+  /* ── TIPOGRAFIA ── */
+  h2{font-size:1rem}
+  h3{font-size:.9rem}
+
+  /* ── OUTROS ── */
+  .score-wrap{flex-direction:column;align-items:center;text-align:center}
+  .emp-card{flex-wrap:wrap}
+  .ticket{flex-wrap:wrap;gap:6px}
+  .hist-row{flex-wrap:wrap}
+  .vaga-card{flex-direction:column}
+  .bpmn-lanes{min-width:600px}
+  .semana-grid{min-width:700px}
+  .escala-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #univ-drop-zone{padding:24px 12px}
+  #auth-user-panel table{min-width:460px}
+  #auth-user-panel .tbl-wrap{overflow-x:auto}
+  #cmd-panel-negocio .g2,.cmd-panel .g2{grid-template-columns:1fr!important}
+  .rh-header{flex-direction:column;align-items:flex-start!important}
+}
+
+/* ── Safe area global (qualquer tamanho) ── */
 @supports(padding:env(safe-area-inset-bottom)){
   #content{padding-bottom:calc(18px + env(safe-area-inset-bottom))}
-  @media(max-width:640px){
-    #content{padding:10px 10px calc(80px + env(safe-area-inset-bottom));
-      scroll-padding-top:var(--header)}
-    .card{border-radius:10px;padding:14px}
-    .kpi{padding:12px}
-    .kpi-val{font-size:1.8rem}
-    h2{font-size:1.1rem}
-    .ph{padding-bottom:10px}
-    .tabs{gap:3px}
-    .tab{font-size:.72rem;padding:6px 10px}
-    .btn{font-size:.8rem}
-    .tbl-wrap table{font-size:.75rem}
-    .fc{font-size:16px}  /* evita zoom automático no iOS */
-  }
+  #sidebar{padding-top:env(safe-area-inset-top,0px)}
 }
 
 /* ═══ CRITICIDADE DE CHECKLIST ═══ */
@@ -2280,16 +2713,6 @@ html { scroll-behavior: smooth; }
         <button class="login-btn" onclick="Auth.login()">
           Entrar →
         </button>
-        <div style="background:rgba(0,180,100,.08);border:1px solid rgba(0,180,100,.25);border-radius:10px;padding:10px 14px;margin-top:14px;font-size:.72rem;color:#065f46;line-height:1.6">
-          <strong>Logins:</strong> camila · admin · derikRamos · gabrielaOliveira<br>
-          <strong>Senha padrão: 123456</strong>
-        </div>
-        <div style="text-align:center;margin-top:10px">
-          <button onclick="_resetEmergencia()" style="background:none;border:1.5px solid rgba(200,24,30,.35);border-radius:8px;color:#9b0a0f;font-size:.69rem;cursor:pointer;font-family:inherit;padding:7px 16px">
-            🔄 Não consigo entrar — Resetar acesso
-          </button>
-        </div>
-
       </div>
 
       <!-- PAINEL TROCA DE SENHA (primeiro acesso) -->
@@ -2440,6 +2863,10 @@ html { scroll-behavior: smooth; }
     <div class="nav-item" data-page="suporte" onclick="nav(this)">
       <span class="nav-ico">🔧</span><span class="nav-lbl">Suporte Técnico</span>
       <span class="nav-badge" id="nb-sup">0</span>
+    </div>
+    <div class="nav-item" data-page="gerente" onclick="nav(this)" id="nav-gerente">
+      <span class="nav-ico">🏢</span><span class="nav-lbl">Gestão do Gerente</span>
+      <span class="nav-badge" id="nb-gerente" style="display:none">!</span>
     </div>
 
     <div class="sec-lbl">Sistema</div>
@@ -9544,9 +9971,7 @@ html { scroll-behavior: smooth; }
   </div>
 </div><!-- /configuracoes -->
 
-<!-- ═══════════════════════════════════════════════
-     ADMIN
-═══════════════════════════════════════════════ -->
+
 <div class="page" id="page-admin">
   <div class="ph">
     <div class="ph-left"><h2>💻 Admin Console</h2><p>Diagnóstico · Backup · Inspector · Logs do sistema</p></div>
@@ -9697,6 +10122,317 @@ html { scroll-behavior: smooth; }
 
 </div><!-- /admin -->
 
+
+
+
+<!-- ═══════════════════════════════════════════════
+     GESTÃO DO GERENTE
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-gerente">
+
+  <div class="ger-header">
+    <div class="ger-header-stripe"></div>
+    <h1>🏢 Gestão do Gerente</h1>
+    <p>Painel completo de operação gerencial diária — válido para qualquer gerente responsável pelo turno</p>
+    <div class="ger-aviso">⚡ Nenhuma responsabilidade gerencial do dia pode ficar sem execução</div>
+  </div>
+
+  <div class="card mb" id="ger-alertas-card" style="display:none">
+    <div class="card-hd"><span class="card-title">🚨 Alertas Operacionais</span><span id="ger-alertas-count" style="font-size:.72rem;color:var(--red);font-weight:800"></span></div>
+    <div id="ger-alertas-list"></div>
+  </div>
+
+  <div class="card mb">
+    <div class="card-hd">
+      <span class="card-title">📊 Resumo do Dia</span>
+      <span style="font-size:.72rem;color:var(--text2)" id="ger-resumo-data"></span>
+    </div>
+    <div class="ger-resumo-grid">
+      <div class="ger-resumo-item info"><div class="ger-resumo-val" id="gr-gerente">—</div><div class="ger-resumo-lbl">Gerente Ativo</div></div>
+      <div class="ger-resumo-item info"><div class="ger-resumo-val" id="gr-abertura">—</div><div class="ger-resumo-lbl">Abertura</div></div>
+      <div class="ger-resumo-item info"><div class="ger-resumo-val" id="gr-fechamento">—</div><div class="ger-resumo-lbl">Fechamento</div></div>
+      <div class="ger-resumo-item info"><div class="ger-resumo-val" id="gr-cl-manha">—</div><div class="ger-resumo-lbl">CL Manhã</div></div>
+      <div class="ger-resumo-item info"><div class="ger-resumo-val" id="gr-cl-noite">—</div><div class="ger-resumo-lbl">CL Noite</div></div>
+      <div class="ger-resumo-item info"><div class="ger-resumo-val" id="gr-pendencias">0</div><div class="ger-resumo-lbl">Pendências</div></div>
+      <div class="ger-resumo-item info"><div class="ger-resumo-val" id="gr-faltando">0</div><div class="ger-resumo-lbl">Itens Faltando</div></div>
+      <div class="ger-resumo-item info"><div class="ger-resumo-val" id="gr-alertas">0</div><div class="ger-resumo-lbl">Alertas</div></div>
+    </div>
+  </div>
+
+  <div class="ger-sec-title">👤 Gerente Responsável do Dia</div>
+  <div class="ger-gerente-card" id="ger-gerente-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+      <div>
+        <div style="font-size:1rem;font-weight:900;color:var(--text)" id="ger-nome-display">Nenhum gerente definido para hoje</div>
+        <div style="font-size:.75rem;color:var(--text2);margin-top:3px" id="ger-turno-display"></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="GerenteEngine.limparGerente()">↩️ Limpar</button>
+      </div>
+    </div>
+    <div class="ger-form-grid" style="margin-bottom:10px">
+      <div class="fg"><label class="fl">Nome do Gerente</label>
+        <input class="fc" id="ger-nome" placeholder="Ex: Derik Ramos, Gaby Vitória…">
+      </div>
+      <div class="fg"><label class="fl">Turno Principal</label>
+        <select class="fc" id="ger-turno">
+          <option value="manhã">☀️ Manhã</option>
+          <option value="noite">🌙 Noite</option>
+          <option value="dia completo">📅 Dia Completo</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Data</label>
+        <input type="date" class="fc" id="ger-data">
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Observação do dia (opcional)</label>
+      <input class="fc" id="ger-obs-dia" placeholder="Ex: Derik de folga — Gaby assume. Atenção ao estoque de óleo.">
+    </div>
+    <button class="btn btn-red btn-sm" onclick="GerenteEngine.salvarGerente()" style="margin-top:8px">💾 Salvar Gerente do Dia</button>
+  </div>
+
+  <div class="ger-sec-title" style="margin-top:4px">🕐 Responsabilidades por Turno</div>
+  <div class="ger-turno-grid">
+    <div class="ger-turno-bloco manha">
+      <div class="ger-turno-title">☀️ Turno Manhã</div>
+      <div class="ger-turno-sub">Abertura · Operação inicial</div>
+      <ul class="ger-turno-list">
+        <li>Abertura da loja</li>
+        <li>Conferência visual da operação</li>
+        <li>Checagem de limpeza inicial</li>
+        <li>Verificação de geladeiras e freezers</li>
+        <li>Conferência de óleo e fritadeira</li>
+        <li>Checagem de estoque crítico</li>
+        <li>Alinhamento do time do turno</li>
+        <li>Conferência inicial de caixa</li>
+        <li>Registro de pendências da loja</li>
+        <li>Relatório de abertura</li>
+        <li>Transição organizada de turno</li>
+      </ul>
+    </div>
+    <div class="ger-turno-bloco noite">
+      <div class="ger-turno-title">🌙 Turno Noite</div>
+      <div class="ger-turno-sub">Fechamento · Controle final</div>
+      <ul class="ger-turno-list">
+        <li>Acompanhamento da operação</li>
+        <li>Conferência de qualidade dos pedidos</li>
+        <li>Organização da cozinha</li>
+        <li>Conferência de estoque final</li>
+        <li>Registro de perdas e problemas</li>
+        <li>Conferência de caixa no fechamento</li>
+        <li>Fechamento da loja</li>
+        <li>Relatório de fechamento</li>
+        <li>Levantamento do que falta</li>
+        <li>Registro de manutenção e insumos</li>
+        <li>Preparação para o dia seguinte</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ger-sec-title">☀️ Checklist Gerencial — Manhã</div>
+  <div class="card mb">
+    <div class="card-hd">
+      <span class="card-title">📋 Checklist Manhã</span>
+      <span style="font-size:.72rem;color:var(--text2)" id="ger-cl-manha-status">Não preenchido hoje</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <div class="fg" style="flex:1;min-width:140px"><label class="fl">Responsável</label><input class="fc" id="gclm-resp" placeholder="Nome do gerente…"></div>
+      <div class="fg" style="min-width:120px"><label class="fl">Data</label><input type="date" class="fc" id="gclm-data"></div>
+    </div>
+    <div id="ger-cl-manha-list"></div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-red" onclick="GerenteEngine.salvarCLManha()">💾 Salvar Checklist Manhã</button>
+      <span id="gclm-status" style="font-size:.74rem;color:var(--text2)"></span>
+    </div>
+  </div>
+
+  <div class="ger-sec-title">🌙 Checklist Gerencial — Noite</div>
+  <div class="card mb">
+    <div class="card-hd">
+      <span class="card-title">📋 Checklist Noite</span>
+      <span style="font-size:.72rem;color:var(--text2)" id="ger-cl-noite-status">Não preenchido hoje</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <div class="fg" style="flex:1;min-width:140px"><label class="fl">Responsável</label><input class="fc" id="gcln-resp" placeholder="Nome do gerente…"></div>
+      <div class="fg" style="min-width:120px"><label class="fl">Data</label><input type="date" class="fc" id="gcln-data"></div>
+    </div>
+    <div id="ger-cl-noite-list"></div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-red" onclick="GerenteEngine.salvarCLNoite()">💾 Salvar Checklist Noite</button>
+      <span id="gcln-status" style="font-size:.74rem;color:var(--text2)"></span>
+    </div>
+  </div>
+
+  <div class="ger-sec-title">🔓 Relatório de Abertura</div>
+  <div class="card mb">
+    <div class="card-hd"><span class="card-title">📄 Relatório de Abertura</span></div>
+    <div class="ger-form-grid">
+      <div class="fg"><label class="fl">Responsável</label><input class="fc" id="grela-resp" placeholder="Nome do gerente…"></div>
+      <div class="fg"><label class="fl">Data</label><input type="date" class="fc" id="grela-data"></div>
+    </div>
+    <div class="fg"><label class="fl">Situação geral da loja na abertura</label><textarea class="fc" id="grela-situacao" rows="3" placeholder="Como encontrou a loja ao abrir…"></textarea></div>
+    <div class="fg"><label class="fl">Principais pontos observados</label><textarea class="fc" id="grela-pontos" rows="2" placeholder="O que chamou atenção…"></textarea></div>
+    <div class="fg"><label class="fl">Problemas encontrados</label><textarea class="fc" id="grela-problemas" rows="2" placeholder="Liste os problemas se houver…"></textarea></div>
+    <div class="fg"><label class="fl">Itens faltando</label><textarea class="fc" id="grela-faltando" rows="2" placeholder="O que estava faltando…"></textarea></div>
+    <div class="fg"><label class="fl">Necessidade de manutenção</label><textarea class="fc" id="grela-manut" rows="2" placeholder="O que precisa de manutenção…"></textarea></div>
+    <div class="fg"><label class="fl">Observações gerais</label><textarea class="fc" id="grela-obs" rows="2" placeholder="Outras observações importantes…"></textarea></div>
+    <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-red" onclick="GerenteEngine.salvarRelAbertura()">💾 Salvar Relatório de Abertura</button>
+      <span id="grela-status" style="font-size:.74rem;color:var(--text2)"></span>
+    </div>
+  </div>
+
+  <div class="ger-sec-title">🔒 Relatório de Fechamento</div>
+  <div class="card mb">
+    <div class="card-hd"><span class="card-title">📄 Relatório de Fechamento</span></div>
+    <div class="ger-form-grid">
+      <div class="fg"><label class="fl">Responsável</label><input class="fc" id="grelf-resp" placeholder="Nome do gerente…"></div>
+      <div class="fg"><label class="fl">Data</label><input type="date" class="fc" id="grelf-data"></div>
+    </div>
+    <div class="fg"><label class="fl">Situação da loja no fechamento</label><textarea class="fc" id="grelf-situacao" rows="3" placeholder="Como estava a loja ao fechar…"></textarea></div>
+    <div class="fg"><label class="fl">Problemas do turno</label><textarea class="fc" id="grelf-problemas" rows="2" placeholder="O que ocorreu de errado…"></textarea></div>
+    <div class="fg"><label class="fl">Itens faltando</label><textarea class="fc" id="grelf-faltando" rows="2" placeholder="O que faltou para amanhã…"></textarea></div>
+    <div class="fg"><label class="fl">Necessidade de reposição</label><textarea class="fc" id="grelf-reposicao" rows="2" placeholder="O que precisa repor…"></textarea></div>
+    <div class="fg"><label class="fl">Necessidade de manutenção</label><textarea class="fc" id="grelf-manut" rows="2" placeholder="O que precisa de manutenção…"></textarea></div>
+    <div class="fg"><label class="fl">Pendências para amanhã</label><textarea class="fc" id="grelf-pendencias" rows="2" placeholder="O que ficou pendente…"></textarea></div>
+    <div class="fg"><label class="fl">Observações finais</label><textarea class="fc" id="grelf-obs" rows="2" placeholder="Outras observações importantes…"></textarea></div>
+    <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-red" onclick="GerenteEngine.salvarRelFechamento()">💾 Salvar Relatório de Fechamento</button>
+      <span id="grelf-status" style="font-size:.74rem;color:var(--text2)"></span>
+    </div>
+  </div>
+
+  <div class="ger-sec-title">📋 Relatório Geral da Loja</div>
+  <div class="card mb">
+    <div class="card-hd"><span class="card-title">🏪 Situação Geral do Dia</span></div>
+    <div class="ger-form-grid">
+      <div class="fg"><label class="fl">Data</label><input type="date" class="fc" id="grelg-data"></div>
+      <div class="fg"><label class="fl">Responsável</label><input class="fc" id="grelg-resp" placeholder="Nome do gerente…"></div>
+      <div class="fg"><label class="fl">Turno</label>
+        <select class="fc" id="grelg-turno">
+          <option value="manhã">☀️ Manhã</option>
+          <option value="noite">🌙 Noite</option>
+          <option value="dia completo">📅 Dia Completo</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Como a loja está hoje?</label><textarea class="fc" id="grelg-como" rows="3" placeholder="Situação geral da loja…"></textarea></div>
+    <div class="fg"><label class="fl">O que tem na loja?</label><textarea class="fc" id="grelg-tem" rows="2" placeholder="Insumos, produtos, condições gerais…"></textarea></div>
+    <div class="fg"><label class="fl">O que está faltando?</label><textarea class="fc" id="grelg-faltando" rows="2" placeholder="Produtos, insumos, materiais…"></textarea></div>
+    <div class="fg"><label class="fl">O que precisa ser resolvido?</label><textarea class="fc" id="grelg-resolver" rows="2" placeholder="Problemas pendentes…"></textarea></div>
+    <div class="fg"><label class="fl">O que precisa comprar?</label><textarea class="fc" id="grelg-comprar" rows="2" placeholder="Lista de compras necessárias…"></textarea></div>
+    <div class="fg"><label class="fl">O que acompanhar amanhã?</label><textarea class="fc" id="grelg-amanha" rows="2" placeholder="Pontos de atenção…"></textarea></div>
+    <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-red" onclick="GerenteEngine.salvarRelGeral()">💾 Salvar Relatório Geral</button>
+      <span id="grelg-status" style="font-size:.74rem;color:var(--text2)"></span>
+    </div>
+  </div>
+
+  <div class="ger-sec-title">📌 Pendências da Loja</div>
+  <div class="card mb">
+    <div class="card-hd"><span class="card-title">➕ Nova Pendência</span></div>
+    <div class="ger-form-grid">
+      <div class="fg"><label class="fl">Título</label><input class="fc" id="gpend-titulo" placeholder="Ex: Geladeira 2 com problema de temperatura"></div>
+      <div class="fg"><label class="fl">Responsável pela resolução</label><input class="fc" id="gpend-resp" placeholder="Quem vai resolver?"></div>
+      <div class="fg"><label class="fl">Categoria</label>
+        <select class="fc" id="gpend-cat">
+          <option value="estoque">Estoque</option><option value="manutenção">Manutenção</option>
+          <option value="limpeza">Limpeza</option><option value="equipe">Equipe</option>
+          <option value="caixa">Caixa</option><option value="operação">Operação</option>
+          <option value="qualidade">Qualidade</option><option value="fornecedor">Fornecedor</option>
+          <option value="estrutura">Estrutura</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Prioridade</label>
+        <select class="fc" id="gpend-prio">
+          <option value="baixa">🟢 Baixa</option><option value="media">🟡 Média</option>
+          <option value="alta">🟠 Alta</option><option value="critica">🔴 Crítica</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Descrição</label><textarea class="fc" id="gpend-desc" rows="2" placeholder="Descreva com detalhes…"></textarea></div>
+    <button class="btn btn-red btn-sm" onclick="GerenteEngine.addPendencia()" style="margin-top:4px">➕ Adicionar Pendência</button>
+  </div>
+  <div class="card mb">
+    <div class="card-hd">
+      <span class="card-title">📋 Pendências em Aberto</span>
+      <select class="fc" id="gpend-filtro" style="width:130px;font-size:.74rem" onchange="GerenteEngine.renderPendencias()">
+        <option value="">Todos</option><option value="pendente">Pendente</option>
+        <option value="em andamento">Em Andamento</option><option value="resolvido">Resolvido</option>
+      </select>
+    </div>
+    <div id="ger-pendencias-list"><p style="font-size:.8rem;color:var(--text2)">Nenhuma pendência registrada.</p></div>
+  </div>
+
+  <div class="ger-sec-title">🛒 Itens Faltando na Loja</div>
+  <div class="card mb">
+    <div class="card-hd"><span class="card-title">➕ Adicionar Item Faltando</span></div>
+    <div class="ger-form-grid">
+      <div class="fg"><label class="fl">Item</label><input class="fc" id="gitem-nome" placeholder="Ex: Farinha de trigo, óleo…"></div>
+      <div class="fg"><label class="fl">Quantidade estimada</label><input class="fc" id="gitem-qtd" placeholder="Ex: 5 kg, 3 caixas…"></div>
+      <div class="fg"><label class="fl">Setor</label>
+        <select class="fc" id="gitem-setor">
+          <option value="cozinha">🍳 Cozinha</option><option value="bar">🥤 Bar</option>
+          <option value="limpeza">🧹 Limpeza</option><option value="embalagem">📦 Embalagem</option>
+          <option value="caixa">💰 Caixa</option><option value="manutenção">🔧 Manutenção</option>
+          <option value="administrativo">📁 Administrativo</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Urgência</label>
+        <select class="fc" id="gitem-urg">
+          <option value="normal">🟢 Normal</option><option value="urgente">🟡 Urgente</option>
+          <option value="muito-urgente">🔴 Muito Urgente</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Observação</label><input class="fc" id="gitem-obs" placeholder="Observação adicional (opcional)"></div>
+    <button class="btn btn-red btn-sm" onclick="GerenteEngine.addItem()" style="margin-top:4px">➕ Adicionar Item</button>
+  </div>
+  <div class="card mb">
+    <div class="card-hd"><span class="card-title">📦 Lista de Itens Faltando</span></div>
+    <div id="ger-itens-list"><p style="font-size:.8rem;color:var(--text2)">Nenhum item registrado.</p></div>
+  </div>
+
+  <div class="ger-sec-title">📁 Histórico de Registros</div>
+  <div class="card mb">
+    <div class="card-hd">
+      <span class="card-title">🗓️ Registros Anteriores</span>
+      <button class="btn btn-ghost btn-sm" onclick="GerenteEngine.renderHistorico()">🔄 Atualizar</button>
+    </div>
+    <div class="ger-tabs" id="ger-hist-tabs">
+      <div class="ger-tab act" onclick="GerenteEngine.switchTab(this,'cl-manha')">☀️ CL Manhã</div>
+      <div class="ger-tab" onclick="GerenteEngine.switchTab(this,'cl-noite')">🌙 CL Noite</div>
+      <div class="ger-tab" onclick="GerenteEngine.switchTab(this,'abertura')">🔓 Abertura</div>
+      <div class="ger-tab" onclick="GerenteEngine.switchTab(this,'fechamento')">🔒 Fechamento</div>
+      <div class="ger-tab" onclick="GerenteEngine.switchTab(this,'geral')">📋 Geral</div>
+    </div>
+    <div id="ger-hist-content"><p style="font-size:.8rem;color:var(--text2)">Nenhum registro encontrado.</p></div>
+  </div>
+
+  <div class="ger-sec-title">📞 Contatos de Suporte</div>
+  <div class="card mb">
+    <div class="card-hd"><span class="card-title">🔧 Apoio Técnico e Manutenção</span></div>
+    <div class="ger-contato-card">
+      <div class="ger-contato-avatar">🔨</div>
+      <div style="flex:1">
+        <div class="ger-contato-name">Carlos — Pedreiro e Eletricista da Loja</div>
+        <div class="ger-contato-num">+55 11 98781-2851</div>
+        <div style="font-size:.7rem;color:var(--text2);margin-top:2px">Manutenção estrutural e elétrica</div>
+      </div>
+      <a href="https://wa.me/5511987812851" target="_blank" class="ger-contato-btn">📱 WhatsApp</a>
+    </div>
+    <div class="ger-contato-card">
+      <div class="ger-contato-avatar">⚡</div>
+      <div style="flex:1">
+        <div class="ger-contato-name">Pedrinho — Eletricista Camila</div>
+        <div class="ger-contato-num">+55 11 94359-0248</div>
+        <div style="font-size:.7rem;color:var(--text2);margin-top:2px">Eletricista de confiança da Camila</div>
+      </div>
+      <a href="https://wa.me/5511943590248" target="_blank" class="ger-contato-btn">📱 WhatsApp</a>
+    </div>
+  </div>
+
+</div><!-- /page-gerente -->
   </div><!-- /content -->
 
   <!-- FOOTER -->
@@ -10235,7 +10971,8 @@ const Router = (() => {
     importar:'Importar Planilhas', rh:'RH – Gestão de Pessoas',
     escala:'Escalas', treinamento:'Treinamentos', vagas:'Vagas e Seleção',
     licenciamento:'Licenciamento de Marca', suporte:'Suporte Técnico',
-    configuracoes:'Configurações', admin:'Admin Console'
+    configuracoes:'Configurações', admin:'Admin Console',
+    gerente:'🏢 Gestão do Gerente'
   };
   let _current = 'dashboard';
   let _ready   = false;
@@ -19017,11 +19754,11 @@ const Auth = (() => {
      read: páginas com acesso somente leitura (botões ocultos)
   ═══════════════════════════════════════════════════════════════ */
   const ACCESS = {
-    admin:        { nav: null,  read: [], label: '👑 Admin (Camila)' },
+    admin:        { nav: null,  read: [], label: '👑 Admin (Camila)' },  /* ferias: acesso irrestrito via nav:null */
     gerencia:     { nav: ['dashboard','hub','manual','checklists','fluxos','bpmn',
                           'ocorrencias','contingencia','vendas',
                           'cancelamentos','importar','rh','escala','treinamento',
-                          'vagas','licenciamento','suporte'],
+                          'vagas','licenciamento','suporte','gerente','configuracoes'],
                     read: [], label: '🏢 Gerência' },
     subgerencia:  { nav: ['manual','checklists','fluxos','bpmn','ocorrencias','escala','contingencia'],
                     read: ['bpmn','escala'], label: '👁️ Subgerência' },
@@ -19684,12 +20421,20 @@ const Auth = (() => {
         }, 1200);
       }
 
-      /* preenche responsável do checklist automaticamente */
+      /* preenche responsável do checklist e da sessão Gerente automaticamente */
       setTimeout(() => {
         const respEl = document.getElementById('cl-responsavel');
         if (respEl && (!respEl.value || respEl.value === 'Não informado')) {
           respEl.value = user.label || ACCESS[role]?.label || role;
         }
+        /* Nome limpo para campos da sessão Gerente */
+        const nomeGer = (user.nomeCompleto || user.label || '').replace(/^[^\w]+/, '').trim() || 'Camila';
+        ['gclm-resp','gcln-resp','grela-resp','grelf-resp','grelg-resp'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el && !el.value) el.value = nomeGer;
+        });
+        const gerNomeEl = document.getElementById('ger-nome');
+        if (gerNomeEl && !gerNomeEl.value) gerNomeEl.value = nomeGer;
       }, 300);
 
       /* operacional → abre aba da função no checklist */
@@ -22891,8 +23636,578 @@ const MetasCEO = (() => {
   };
 })();
 
-/* ── Hook: ao abrir dashboard, inicializa extras e renderiza ── */
+/* ════════════════════════════════════════════════════════════════════
+   GESTÃO DO GERENTE — ENGINE
+   Checklists gerenciais, relatórios, pendências, itens faltando,
+   alertas automáticos e histórico. Persistência: localStorage "ger_"
+════════════════════════════════════════════════════════════════════ */
+const GerenteEngine = (() => {
+
+  /* ── Storage keys ── */
+  const K = {
+    gerente:    'ger_gerente_dia',
+    clManha:    'ger_cl_manha',
+    clNoite:    'ger_cl_noite',
+    pendencias: 'ger_pendencias',
+    itens:      'ger_itens',
+    hClM:       'ger_hist_cl_manha',
+    hClN:       'ger_hist_cl_noite',
+    hRelA:      'ger_hist_rel_abertura',
+    hRelF:      'ger_hist_rel_fechamento',
+    hRelG:      'ger_hist_rel_geral',
+  };
+
+  /* ── Helpers ── */
+  const ls   = k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } };
+  const lss  = (k,v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+  const hoje = () => new Date().toISOString().split('T')[0];
+  const fmt  = s => { if (!s) return '—'; const [y,m,d]=s.split('-'); return `${d}/${m}/${y}`; };
+  const hora = () => { const n=new Date(); return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; };
+  const uid  = () => Date.now().toString(36) + Math.random().toString(36).slice(2,5);
+
+  /* ── Itens Checklist Manhã ── */
+  const CLM = [
+    {id:'m01',label:'Abertura da loja realizada',critico:true},
+    {id:'m02',label:'Salão conferido',critico:false},
+    {id:'m03',label:'Cozinha conferida',critico:false},
+    {id:'m04',label:'Limpeza inicial ok',critico:false},
+    {id:'m05',label:'Geladeiras verificadas',critico:true},
+    {id:'m06',label:'Freezers verificados',critico:false},
+    {id:'m07',label:'Temperatura conferida',critico:true},
+    {id:'m08',label:'Fritadeira verificada',critico:true},
+    {id:'m09',label:'Condição do óleo verificada',critico:true},
+    {id:'m10',label:'Estoque crítico verificado',critico:false},
+    {id:'m11',label:'Insumos principais conferidos',critico:false},
+    {id:'m12',label:'Caixa inicial conferido',critico:true},
+    {id:'m13',label:'Equipe alinhada',critico:false},
+    {id:'m14',label:'Uniforme e apresentação observados',critico:false},
+    {id:'m15',label:'Pendências do turno anterior verificadas',critico:false},
+    {id:'m16',label:'Relatório de abertura preenchido',critico:false},
+  ];
+
+  /* ── Itens Checklist Noite ── */
+  const CLN = [
+    {id:'n01',label:'Operação do turno acompanhada',critico:false},
+    {id:'n02',label:'Qualidade dos pedidos conferida',critico:true},
+    {id:'n03',label:'Cozinha organizada',critico:false},
+    {id:'n04',label:'Estoque final conferido',critico:true},
+    {id:'n05',label:'Perdas observadas e registradas',critico:false},
+    {id:'n06',label:'Problemas do turno registrados',critico:false},
+    {id:'n07',label:'Equipe final alinhada',critico:false},
+    {id:'n08',label:'Caixa conferido',critico:true},
+    {id:'n09',label:'Fechamento realizado',critico:true},
+    {id:'n10',label:'Limpeza final observada',critico:false},
+    {id:'n11',label:'Pendências para amanhã registradas',critico:true},
+    {id:'n12',label:'Relatório de fechamento preenchido',critico:false},
+  ];
+
+  let _histTab = 'cl-manha';
+
+  /* ════ INIT ════ */
+  function init() {
+    const hj = hoje();
+    /* Preenche datas padrão */
+    ['gclm-data','gcln-data','grela-data','grelf-data','grelg-data','ger-data'].forEach(id => {
+      const el = document.getElementById(id); if (el && !el.value) el.value = hj;
+    });
+    const rd = document.getElementById('ger-resumo-data');
+    if (rd) rd.textContent = fmt(hj);
+
+    /* Preenche responsável com o usuário logado (Camila ou quem for) */
+    let nomeLogado = 'Camila';
+    if (typeof Auth !== 'undefined' && Auth.current()) {
+      const u = Auth.current();
+      nomeLogado = u.nomeCompleto || u.label || u.id || 'Camila';
+      /* Remove emoji do label se houver */
+      nomeLogado = nomeLogado.replace(/^[^\w]+/, '').trim();
+    }
+    ['gclm-resp','gcln-resp','grela-resp','grelf-resp','grelg-resp'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && !el.value) el.value = nomeLogado;
+    });
+    /* Preenche o campo "Gerente do Dia" se não tiver nada salvo hoje */
+    const gSalvo = ls(K.gerente);
+    if (!gSalvo || gSalvo.data !== hj) {
+      const ni = document.getElementById('ger-nome');
+      if (ni && !ni.value) ni.value = nomeLogado;
+    }
+
+    _renderGerenteAtivo();
+    _renderCL('manha');
+    _renderCL('noite');
+    renderPendencias();
+    renderItens();
+    renderHistorico();
+    _renderResumo();
+    _renderAlertas();
+  }
+
+  /* ════ GERENTE DO DIA ════ */
+  function _renderGerenteAtivo() {
+    const g = ls(K.gerente);
+    const hj = hoje();
+    const nomeDis = document.getElementById('ger-nome-display');
+    const turnoDis = document.getElementById('ger-turno-display');
+    const card = document.getElementById('ger-gerente-card');
+    if (g && g.data === hj) {
+      if (nomeDis) nomeDis.textContent = g.nome || '—';
+      if (turnoDis) turnoDis.textContent = `Turno: ${g.turno} · ${fmt(g.data)}${g.obs ? ' · ' + g.obs : ''}`;
+      if (card) card.classList.add('ativo');
+      const ni = document.getElementById('ger-nome'); if (ni) ni.value = g.nome || '';
+      const ti = document.getElementById('ger-turno'); if (ti) ti.value = g.turno || 'manhã';
+      const oi = document.getElementById('ger-obs-dia'); if (oi) oi.value = g.obs || '';
+    } else {
+      if (nomeDis) nomeDis.textContent = 'Nenhum gerente definido para hoje';
+      if (turnoDis) turnoDis.textContent = '';
+      if (card) card.classList.remove('ativo');
+    }
+  }
+
+  function salvarGerente() {
+    const nome = document.getElementById('ger-nome')?.value.trim();
+    if (!nome) { _toast('Informe o nome do gerente.','err'); return; }
+    lss(K.gerente, {
+      nome, turno: document.getElementById('ger-turno')?.value || 'manhã',
+      data: document.getElementById('ger-data')?.value || hoje(),
+      obs: document.getElementById('ger-obs-dia')?.value || '',
+    });
+    _renderGerenteAtivo();
+    _renderResumo();
+    _toast('Gerente do dia salvo!','ok');
+  }
+
+  function limparGerente() {
+    localStorage.removeItem(K.gerente);
+    _renderGerenteAtivo();
+    _renderResumo();
+    _toast('Gerente do dia limpo.','info');
+  }
+
+  /* ════ CHECKLIST ════ */
+  function _renderCL(turno) {
+    const items = turno === 'manha' ? CLM : CLN;
+    const saved = ls(turno === 'manha' ? K.clManha : K.clNoite) || {};
+    const cont = document.getElementById(`ger-cl-${turno}-list`);
+    if (!cont) return;
+    cont.innerHTML = items.map(item => _clHTML(item, saved[item.id]||{}, turno)).join('');
+    _updCLStatus(turno);
+  }
+
+  function _clHTML(item, state, turno) {
+    const st = state.status || '';
+    let cls = 'ger-cl-item' + (item.critico?' critico':'');
+    if (st==='ok') cls+=' status-ok';
+    if (st==='nok') cls+=' status-nok';
+    if (st==='na') cls+=' status-na';
+    return `<div class="${cls}" id="gcli-${turno}-${item.id}">
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span class="ger-cl-label">${item.label}</span>
+          ${item.critico?'<span class="ger-cl-critico-tag">Crítico</span>':''}
+        </div>
+        <div class="ger-cl-obs-wrap${st==='nok'?' visible':''}" id="gcliobs-${turno}-${item.id}">
+          <textarea class="ger-cl-obs" placeholder="Descreva o problema (obrigatório)…"
+            onchange="GerenteEngine._clObs('${turno}','${item.id}',this.value)">${state.obs||''}</textarea>
+        </div>
+      </div>
+      <div class="ger-cl-btns">
+        <button class="ger-cl-btn${st==='ok'?' sel-ok':''}"  onclick="GerenteEngine._clSet('${turno}','${item.id}','ok')">✅ OK</button>
+        <button class="ger-cl-btn${st==='nok'?' sel-nok':''}" onclick="GerenteEngine._clSet('${turno}','${item.id}','nok')">❌ Não OK</button>
+        <button class="ger-cl-btn${st==='na'?' sel-na':''}"  onclick="GerenteEngine._clSet('${turno}','${item.id}','na')">— N/A</button>
+      </div>
+    </div>`;
+  }
+
+  function _clSet(turno, id, status) {
+    const k = turno==='manha'?K.clManha:K.clNoite;
+    const saved = ls(k)||{};
+    if (!saved[id]) saved[id]={};
+    saved[id].status = status;
+    lss(k, saved);
+    const items = turno==='manha'?CLM:CLN;
+    const item = items.find(i=>i.id===id);
+    const wrap = document.getElementById(`gcli-${turno}-${id}`);
+    if (wrap && item) wrap.outerHTML = _clHTML(item, saved[id], turno);
+    _updCLStatus(turno);
+    _renderResumo();
+    _renderAlertas();
+  }
+
+  function _clObs(turno, id, val) {
+    const k = turno==='manha'?K.clManha:K.clNoite;
+    const saved = ls(k)||{};
+    if (!saved[id]) saved[id]={};
+    saved[id].obs = val;
+    lss(k, saved);
+  }
+
+  function _updCLStatus(turno) {
+    const items = turno==='manha'?CLM:CLN;
+    const saved = ls(turno==='manha'?K.clManha:K.clNoite)||{};
+    const total = items.length;
+    const feitos = items.filter(i=>saved[i.id]?.status).length;
+    const el = document.getElementById(`ger-cl-${turno}-status`);
+    if (!el) return;
+    if (feitos===total) el.textContent=`✅ Concluído (${feitos}/${total})`;
+    else if (feitos>0)  el.textContent=`⏳ Em andamento (${feitos}/${total})`;
+    else                el.textContent='⭕ Não iniciado';
+  }
+
+  function salvarCLManha() {
+    const saved = ls(K.clManha)||{};
+    const noks = CLM.filter(i=>i.critico && saved[i.id]?.status==='nok' && !saved[i.id]?.obs);
+    if (noks.length) { _toast(`Preencha observação nos itens críticos: ${noks.map(i=>i.label).join(', ')}`, 'err'); return; }
+    const resp = document.getElementById('gclm-resp')?.value||'';
+    const data = document.getElementById('gclm-data')?.value||hoje();
+    const hist = ls(K.hClM)||[];
+    hist.unshift({id:uid(),data,resp,turno:'manhã',items:{...saved},savedAt:new Date().toISOString()});
+    lss(K.hClM, hist); lss(K.clManha, saved);
+    const el=document.getElementById('gclm-status'); if(el) el.textContent=`✅ Salvo às ${hora()}`;
+    _renderResumo(); _renderAlertas(); _updateBadge(); renderHistorico();
+    _toast('Checklist manhã salvo!','ok');
+  }
+
+  function salvarCLNoite() {
+    const saved = ls(K.clNoite)||{};
+    const noks = CLN.filter(i=>i.critico && saved[i.id]?.status==='nok' && !saved[i.id]?.obs);
+    if (noks.length) { _toast(`Preencha observação nos itens críticos: ${noks.map(i=>i.label).join(', ')}`, 'err'); return; }
+    const resp = document.getElementById('gcln-resp')?.value||'';
+    const data = document.getElementById('gcln-data')?.value||hoje();
+    const hist = ls(K.hClN)||[];
+    hist.unshift({id:uid(),data,resp,turno:'noite',items:{...saved},savedAt:new Date().toISOString()});
+    lss(K.hClN, hist); lss(K.clNoite, saved);
+    const el=document.getElementById('gcln-status'); if(el) el.textContent=`✅ Salvo às ${hora()}`;
+    _renderResumo(); _renderAlertas(); _updateBadge(); renderHistorico();
+    _toast('Checklist noite salvo!','ok');
+  }
+
+  /* ════ RELATÓRIOS ════ */
+  function salvarRelAbertura() {
+    const obj = {id:uid(),
+      data:document.getElementById('grela-data')?.value||hoje(),
+      resp:document.getElementById('grela-resp')?.value||'',
+      situacao:document.getElementById('grela-situacao')?.value||'',
+      pontos:document.getElementById('grela-pontos')?.value||'',
+      problemas:document.getElementById('grela-problemas')?.value||'',
+      faltando:document.getElementById('grela-faltando')?.value||'',
+      manut:document.getElementById('grela-manut')?.value||'',
+      obs:document.getElementById('grela-obs')?.value||'',
+      savedAt:new Date().toISOString()
+    };
+    if (!obj.situacao.trim()) { _toast('Preencha a situação geral da loja.','err'); return; }
+    const hist=ls(K.hRelA)||[]; hist.unshift(obj); lss(K.hRelA,hist);
+    const el=document.getElementById('grela-status'); if(el) el.textContent=`✅ Salvo às ${hora()}`;
+    _renderResumo(); _renderAlertas(); renderHistorico();
+    _toast('Relatório de abertura salvo!','ok');
+  }
+
+  function salvarRelFechamento() {
+    const obj = {id:uid(),
+      data:document.getElementById('grelf-data')?.value||hoje(),
+      resp:document.getElementById('grelf-resp')?.value||'',
+      situacao:document.getElementById('grelf-situacao')?.value||'',
+      problemas:document.getElementById('grelf-problemas')?.value||'',
+      faltando:document.getElementById('grelf-faltando')?.value||'',
+      reposicao:document.getElementById('grelf-reposicao')?.value||'',
+      manut:document.getElementById('grelf-manut')?.value||'',
+      pendencias:document.getElementById('grelf-pendencias')?.value||'',
+      obs:document.getElementById('grelf-obs')?.value||'',
+      savedAt:new Date().toISOString()
+    };
+    if (!obj.situacao.trim()) { _toast('Preencha a situação da loja no fechamento.','err'); return; }
+    const hist=ls(K.hRelF)||[]; hist.unshift(obj); lss(K.hRelF,hist);
+    const el=document.getElementById('grelf-status'); if(el) el.textContent=`✅ Salvo às ${hora()}`;
+    _renderResumo(); _renderAlertas(); renderHistorico();
+    _toast('Relatório de fechamento salvo!','ok');
+  }
+
+  function salvarRelGeral() {
+    const obj = {id:uid(),
+      data:document.getElementById('grelg-data')?.value||hoje(),
+      resp:document.getElementById('grelg-resp')?.value||'',
+      turno:document.getElementById('grelg-turno')?.value||'manhã',
+      como:document.getElementById('grelg-como')?.value||'',
+      tem:document.getElementById('grelg-tem')?.value||'',
+      faltando:document.getElementById('grelg-faltando')?.value||'',
+      resolver:document.getElementById('grelg-resolver')?.value||'',
+      comprar:document.getElementById('grelg-comprar')?.value||'',
+      amanha:document.getElementById('grelg-amanha')?.value||'',
+      savedAt:new Date().toISOString()
+    };
+    const hist=ls(K.hRelG)||[]; hist.unshift(obj); lss(K.hRelG,hist);
+    const el=document.getElementById('grelg-status'); if(el) el.textContent=`✅ Salvo às ${hora()}`;
+    renderHistorico();
+    _toast('Relatório geral salvo!','ok');
+  }
+
+  /* ════ PENDÊNCIAS ════ */
+  function addPendencia() {
+    const titulo = document.getElementById('gpend-titulo')?.value.trim();
+    if (!titulo) { _toast('Informe o título da pendência.','err'); return; }
+    const lst = ls(K.pendencias)||[];
+    lst.unshift({id:uid(),titulo,
+      desc:document.getElementById('gpend-desc')?.value||'',
+      categoria:document.getElementById('gpend-cat')?.value||'operação',
+      prioridade:document.getElementById('gpend-prio')?.value||'media',
+      resp:document.getElementById('gpend-resp')?.value||'',
+      data:hoje(),status:'pendente',createdAt:new Date().toISOString()
+    });
+    lss(K.pendencias,lst);
+    ['gpend-titulo','gpend-desc','gpend-resp'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+    renderPendencias(); _renderResumo(); _renderAlertas(); _updateBadge();
+    _toast('Pendência adicionada!','ok');
+  }
+
+  function _setPendStatus(id, status) {
+    const lst=ls(K.pendencias)||[];
+    const i=lst.findIndex(p=>p.id===id);
+    if(i>=0){lst[i].status=status;lss(K.pendencias,lst);}
+    renderPendencias(); _renderResumo(); _renderAlertas(); _updateBadge();
+  }
+
+  function _delPend(id) {
+    if(!confirm('Excluir esta pendência?')) return;
+    lss(K.pendencias,(ls(K.pendencias)||[]).filter(p=>p.id!==id));
+    renderPendencias(); _renderResumo(); _renderAlertas(); _updateBadge();
+  }
+
+  function renderPendencias() {
+    const cont=document.getElementById('ger-pendencias-list'); if(!cont) return;
+    let lst=ls(K.pendencias)||[];
+    const f=document.getElementById('gpend-filtro')?.value||'';
+    if(f) lst=lst.filter(p=>p.status===f);
+    if(!lst.length){cont.innerHTML='<p style="font-size:.8rem;color:var(--text2)">Nenhuma pendência encontrada.</p>';return;}
+    const pL={baixa:'🟢 Baixa',media:'🟡 Média',alta:'🟠 Alta',critica:'🔴 Crítica'};
+    const sL={pendente:'Pendente','em andamento':'Em Andamento',resolvido:'Resolvido'};
+    cont.innerHTML=lst.map(p=>`
+      <div class="ger-pend-card prio-${p.prioridade}">
+        <div class="ger-pend-title">${p.titulo}</div>
+        ${p.desc?`<div class="ger-pend-desc">${p.desc}</div>`:''}
+        <div class="ger-pend-meta">
+          <span class="ger-tag cat">${p.categoria}</span>
+          <span class="ger-tag ${p.prioridade}-t">${pL[p.prioridade]||p.prioridade}</span>
+          <span class="ger-tag ${p.status==='resolvido'?'resolvido':p.status==='em andamento'?'andamento':'pend'}">${sL[p.status]||p.status}</span>
+          ${p.resp?`<span style="font-size:.72rem;color:var(--text2)">👤 ${p.resp}</span>`:''}
+          <span style="font-size:.72rem;color:var(--text2)">📅 ${fmt(p.data)}</span>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:9px;flex-wrap:wrap">
+          ${p.status!=='pendente'?`<button class="btn btn-ghost btn-xs" onclick="GerenteEngine._setPendStatus('${p.id}','pendente')">⭕ Pendente</button>`:''}
+          ${p.status!=='em andamento'?`<button class="btn btn-ghost btn-xs" onclick="GerenteEngine._setPendStatus('${p.id}','em andamento')">🔄 Em Andamento</button>`:''}
+          ${p.status!=='resolvido'?`<button class="btn btn-ghost btn-xs" onclick="GerenteEngine._setPendStatus('${p.id}','resolvido')">✅ Resolvido</button>`:''}
+          <button class="btn btn-ghost btn-xs" style="color:var(--red)" onclick="GerenteEngine._delPend('${p.id}')">🗑️</button>
+        </div>
+      </div>`).join('');
+  }
+
+  /* ════ ITENS FALTANDO ════ */
+  function addItem() {
+    const nome=document.getElementById('gitem-nome')?.value.trim();
+    if(!nome){_toast('Informe o nome do item.','err');return;}
+    const lst=ls(K.itens)||[];
+    lst.unshift({id:uid(),nome,
+      qtd:document.getElementById('gitem-qtd')?.value||'',
+      setor:document.getElementById('gitem-setor')?.value||'cozinha',
+      urgencia:document.getElementById('gitem-urg')?.value||'normal',
+      obs:document.getElementById('gitem-obs')?.value||'',
+      data:hoje(),resolvido:false,createdAt:new Date().toISOString()
+    });
+    lss(K.itens,lst);
+    ['gitem-nome','gitem-qtd','gitem-obs'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+    renderItens(); _renderResumo(); _renderAlertas(); _updateBadge();
+    _toast('Item adicionado!','ok');
+  }
+
+  function _toggleItem(id) {
+    const lst=ls(K.itens)||[];
+    const i=lst.findIndex(it=>it.id===id);
+    if(i>=0){lst[i].resolvido=!lst[i].resolvido;lss(K.itens,lst);}
+    renderItens(); _renderResumo(); _renderAlertas(); _updateBadge();
+  }
+
+  function _delItem(id) {
+    if(!confirm('Excluir este item?')) return;
+    lss(K.itens,(ls(K.itens)||[]).filter(it=>it.id!==id));
+    renderItens(); _renderResumo(); _renderAlertas(); _updateBadge();
+  }
+
+  function renderItens() {
+    const cont=document.getElementById('ger-itens-list'); if(!cont) return;
+    const lst=ls(K.itens)||[];
+    if(!lst.length){cont.innerHTML='<p style="font-size:.8rem;color:var(--text2)">Nenhum item registrado.</p>';return;}
+    const uL={'normal':'🟢 Normal','urgente':'🟡 Urgente','muito-urgente':'🔴 Muito Urgente'};
+    cont.innerHTML=lst.map(it=>`
+      <div class="ger-item-card" style="${it.resolvido?'opacity:.5':''}">
+        <div class="ger-item-urgencia ${it.urgencia}"></div>
+        <div style="flex:1">
+          <div style="font-size:.82rem;font-weight:700;color:var(--text);${it.resolvido?'text-decoration:line-through;':''}">${it.nome}</div>
+          <div style="font-size:.72rem;color:var(--text2);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap">
+            ${it.qtd?`<span>📦 ${it.qtd}</span>`:''}
+            <span>🏷️ ${it.setor}</span>
+            <span>${uL[it.urgencia]||it.urgencia}</span>
+            <span>📅 ${fmt(it.data)}</span>
+          </div>
+          ${it.obs?`<div style="font-size:.72rem;color:var(--text2);margin-top:2px">${it.obs}</div>`:''}
+        </div>
+        <div style="display:flex;gap:5px;flex-shrink:0">
+          <button class="btn btn-ghost btn-xs" onclick="GerenteEngine._toggleItem('${it.id}')">${it.resolvido?'↩️ Reabrir':'✅ Ok'}</button>
+          <button class="btn btn-ghost btn-xs" style="color:var(--red)" onclick="GerenteEngine._delItem('${it.id}')">🗑️</button>
+        </div>
+      </div>`).join('');
+  }
+
+  /* ════ ALERTAS ════ */
+  function _renderAlertas() {
+    const cont=document.getElementById('ger-alertas-list');
+    const card=document.getElementById('ger-alertas-card');
+    if(!cont||!card) return;
+    const hj=hoje(); const alertas=[];
+
+    const hM=ls(K.hClM)||[];
+    if(!hM.find(r=>r.data===hj)) alertas.push({t:'aviso',m:'Checklist gerencial da manhã ainda não foi concluído hoje.'});
+    const hN=ls(K.hClN)||[];
+    if(!hN.find(r=>r.data===hj)) alertas.push({t:'aviso',m:'Checklist gerencial da noite ainda não foi concluído hoje.'});
+
+    const hA=ls(K.hRelA)||[]; const hF=ls(K.hRelF)||[];
+    if(hA.find(r=>r.data===hj) && !hF.find(r=>r.data===hj)) alertas.push({t:'info',m:'Relatório de abertura registrado, mas fechamento ainda está pendente.'});
+    if(!hA.find(r=>r.data===hj) && hF.find(r=>r.data===hj)) alertas.push({t:'critico',m:'Fechamento registrado sem relatório de abertura para hoje.'});
+
+    const nokM=CLM.filter(i=>i.critico&&(ls(K.clManha)||{})[i.id]?.status==='nok');
+    if(nokM.length) alertas.push({t:'critico',m:`Item(s) crítico(s) NÃO OK no CL Manhã: ${nokM.map(i=>i.label).join(', ')}`});
+    const nokN=CLN.filter(i=>i.critico&&(ls(K.clNoite)||{})[i.id]?.status==='nok');
+    if(nokN.length) alertas.push({t:'critico',m:`Item(s) crítico(s) NÃO OK no CL Noite: ${nokN.map(i=>i.label).join(', ')}`});
+
+    const pendCrit=(ls(K.pendencias)||[]).filter(p=>p.prioridade==='critica'&&p.status!=='resolvido');
+    if(pendCrit.length) alertas.push({t:'critico',m:`${pendCrit.length} pendência(s) crítica(s) em aberto.`});
+    const iMU=(ls(K.itens)||[]).filter(it=>it.urgencia==='muito-urgente'&&!it.resolvido);
+    if(iMU.length) alertas.push({t:'critico',m:`${iMU.length} item(s) com urgência MUITO URGENTE faltando.`});
+    const iU=(ls(K.itens)||[]).filter(it=>it.urgencia==='urgente'&&!it.resolvido);
+    if(iU.length) alertas.push({t:'aviso',m:`${iU.length} item(s) urgente(s) faltando na loja.`});
+
+    const nb=document.getElementById('nb-gerente');
+    if(nb){if(alertas.length>0){nb.style.display='';nb.textContent=alertas.length;}else nb.style.display='none';}
+    const ac=document.getElementById('ger-alertas-count');
+    if(ac) ac.textContent=alertas.length>0?`${alertas.length} alerta(s)`:'';
+    card.style.display=alertas.length>0?'':'none';
+    const icoM={critico:'🚨',aviso:'⚠️',info:'ℹ️'};
+    cont.innerHTML=alertas.map(a=>`<div class="ger-alert ${a.t}"><span class="ger-alert-txt">${icoM[a.t]||'⚠️'} ${a.m}</span></div>`).join('');
+  }
+
+  /* ════ RESUMO ════ */
+  function _renderResumo() {
+    const hj=hoje();
+    const g=ls(K.gerente);
+    const hM=ls(K.hClM)||[]; const hN=ls(K.hClN)||[];
+    const hA=ls(K.hRelA)||[]; const hF=ls(K.hRelF)||[];
+    const pends=(ls(K.pendencias)||[]).filter(p=>p.status!=='resolvido');
+    const itens=(ls(K.itens)||[]).filter(it=>!it.resolvido);
+    let alC=0;
+    if(!hM.find(r=>r.data===hj)) alC++;
+    if(!hN.find(r=>r.data===hj)) alC++;
+    alC+=CLM.filter(i=>i.critico&&(ls(K.clManha)||{})[i.id]?.status==='nok').length;
+    alC+=CLN.filter(i=>i.critico&&(ls(K.clNoite)||{})[i.id]?.status==='nok').length;
+    alC+=(ls(K.pendencias)||[]).filter(p=>p.prioridade==='critica'&&p.status!=='resolvido').length;
+    alC+=(ls(K.itens)||[]).filter(it=>it.urgencia==='muito-urgente'&&!it.resolvido).length;
+
+    const set=(id,val,cls)=>{
+      const el=document.getElementById(id); if(!el) return;
+      el.textContent=val;
+      const p=el.closest('.ger-resumo-item');
+      if(p&&cls){p.className='ger-resumo-item '+cls;}
+    };
+    set('gr-gerente', g&&g.data===hj?g.nome.split(' ')[0]:'—', g&&g.data===hj?'ok':'pend');
+    set('gr-abertura', hA.find(r=>r.data===hj)?'✅ Sim':'❌ Não', hA.find(r=>r.data===hj)?'ok':'alerta');
+    set('gr-fechamento', hF.find(r=>r.data===hj)?'✅ Sim':'⭕ Pend', hF.find(r=>r.data===hj)?'ok':'pend');
+    set('gr-cl-manha', hM.find(r=>r.data===hj)?'✅ Pronto':'⭕ Pend', hM.find(r=>r.data===hj)?'ok':'alerta');
+    set('gr-cl-noite', hN.find(r=>r.data===hj)?'✅ Pronto':'⭕ Pend', hN.find(r=>r.data===hj)?'ok':'pend');
+    set('gr-pendencias', pends.length, pends.length>0?'alerta':'ok');
+    set('gr-faltando', itens.length, itens.length>0?'pend':'ok');
+    set('gr-alertas', alC, alC>0?'alerta':'ok');
+  }
+
+  /* ════ HISTÓRICO ════ */
+  function switchTab(el, tab) {
+    _histTab=tab;
+    document.querySelectorAll('#ger-hist-tabs .ger-tab').forEach(t=>t.classList.remove('act'));
+    el.classList.add('act');
+    renderHistorico();
+  }
+
+  function renderHistorico() {
+    const cont=document.getElementById('ger-hist-content'); if(!cont) return;
+    const kMap={'cl-manha':K.hClM,'cl-noite':K.hClN,'abertura':K.hRelA,'fechamento':K.hRelF,'geral':K.hRelG};
+    const recs=ls(kMap[_histTab])||[];
+    if(!recs.length){cont.innerHTML='<p style="font-size:.8rem;color:var(--text2)">Nenhum registro encontrado.</p>';return;}
+    const tLabel={'cl-manha':'☀️ CL Manhã','cl-noite':'🌙 CL Noite','abertura':'🔓 Abertura','fechamento':'🔒 Fechamento','geral':'📋 Geral'};
+    const tColor={'cl-manha':'#d97706','cl-noite':'#6366f1','abertura':'#16a34a','fechamento':'#dc2626','geral':'#2563eb'};
+    cont.innerHTML=recs.map(r=>{
+      let resumo='—', detalhes='';
+      if(_histTab.startsWith('cl-')){
+        const items=_histTab==='cl-manha'?CLM:CLN;
+        const ok=items.filter(i=>r.items?.[i.id]?.status==='ok').length;
+        const nok=items.filter(i=>r.items?.[i.id]?.status==='nok').length;
+        resumo=`${ok} OK · ${nok} Não OK`;
+        const nokI=items.filter(i=>r.items?.[i.id]?.status==='nok');
+        detalhes=`<div style="font-size:.75rem;color:var(--text2)">${ok} OK, ${nok} Não OK de ${items.length} itens.${nokI.length?`<br><span style="color:var(--red)">Não conformes: ${nokI.map(i=>i.label).join(', ')}</span>`:''}</div>`;
+      } else {
+        const campos=Object.entries(r).filter(([k])=>!['id','savedAt','data','resp','turno'].includes(k));
+        resumo=(r.situacao||r.como||'—').substring(0,60);
+        detalhes=campos.map(([k,v])=>v?`<div style="margin-bottom:5px"><strong style="font-size:.7rem;text-transform:uppercase;color:var(--text2)">${k}:</strong><div style="font-size:.77rem">${v}</div></div>`:'').join('');
+      }
+      return `<div class="ger-hist-card">
+        <div class="ger-hist-hd" onclick="this.nextElementSibling.classList.toggle('open')">
+          <span class="ger-hist-tipo" style="background:${tColor[_histTab]}20;color:${tColor[_histTab]};border:1px solid ${tColor[_histTab]}40">${tLabel[_histTab]}</span>
+          <div style="flex:1">
+            <div style="font-size:.8rem;font-weight:700;color:var(--text)">${fmt(r.data)} · ${r.resp||'—'}</div>
+            <div style="font-size:.72rem;color:var(--text2)">${resumo}</div>
+          </div>
+          <span style="font-size:.7rem;color:var(--text2)">▼</span>
+        </div>
+        <div class="ger-hist-body">
+          ${detalhes}
+          <button class="btn btn-ghost btn-xs" style="color:var(--red);margin-top:8px" onclick="GerenteEngine._delHist('${r.id}')">🗑️ Excluir</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function _delHist(id) {
+    if(!confirm('Excluir este registro?')) return;
+    const kMap={'cl-manha':K.hClM,'cl-noite':K.hClN,'abertura':K.hRelA,'fechamento':K.hRelF,'geral':K.hRelG};
+    const k=kMap[_histTab];
+    lss(k,(ls(k)||[]).filter(r=>r.id!==id));
+    renderHistorico();
+  }
+
+  /* ════ BADGE & TOAST ════ */
+  function _updateBadge() { _renderAlertas(); }
+
+  function _toast(msg,tipo) {
+    let t=document.getElementById('ger-toast');
+    if(!t){t=document.createElement('div');t.id='ger-toast';
+      t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:9000;padding:10px 20px;border-radius:10px;font-size:.82rem;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.22);transition:opacity .3s;pointer-events:none;white-space:nowrap;';
+      document.body.appendChild(t);}
+    const c={ok:'background:#dcfce7;color:#166534;border:1px solid #86efac',err:'background:#fee2e2;color:#991b1b;border:1px solid #fca5a5',info:'background:#dbeafe;color:#1e40af;border:1px solid #93c5fd'};
+    t.style.cssText+=c[tipo]||c.info;
+    t.textContent=msg; t.style.opacity='1';
+    clearTimeout(t._t); t._t=setTimeout(()=>{t.style.opacity='0';},2800);
+  }
+
+  return {
+    init, salvarGerente, limparGerente,
+    salvarCLManha, salvarCLNoite,
+    salvarRelAbertura, salvarRelFechamento, salvarRelGeral,
+    addPendencia, renderPendencias, _setPendStatus, _delPend,
+    addItem, renderItens, _toggleItem, _delItem,
+    switchTab, renderHistorico, _delHist,
+    _clSet, _clObs,
+  };
+})();
+
+/* ── Hook: ao abrir páginas, inicializa engines correspondentes ── */
 EventBus.on('route:changed', ({ page }) => {
+  if (page === 'gerente') {
+    GerenteEngine.init();
+  }
   if (page === 'dashboard') {
     FiltrosGlobais.init();
     CentralCEO_Plus.startAlertasInterval();
@@ -22915,19 +24230,24 @@ EventBus.on('db:ready', () => {
 
 </script>
 
-<!-- ═══════════ PWA + EMERGÊNCIA ═══════════ -->
+<!-- ═══ PWA Service Worker + Instalar ═══ -->
 <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  });
+}
 function _resetEmergencia() {
-  if (!confirm('Vai resetar o acesso:\n\n• Desbloquear tentativas\n• Apagar sessão\n• Restaurar senhas para 123456\n\nConfirmar?')) return;
-  var del = [];
+  if (!confirm('Resetar acesso?\n\nIsso vai:\n• Desbloquear tentativas\n• Apagar sessão\n• Restaurar senhas para 123456')) return;
+  var keys = [];
   for (var i = 0; i < localStorage.length; i++) {
     var k = localStorage.key(i);
     if (k && (k.startsWith('login_tries_') || k.startsWith('pc_users') ||
-        k === 'pc_schema_ver' || k === 'pc_session_v1' || k === 'auth_log')) del.push(k);
+        k === 'pc_schema_ver' || k === 'pc_session_v1' || k === 'auth_log')) keys.push(k);
   }
-  del.forEach(function(k){ localStorage.removeItem(k); });
+  keys.forEach(function(k){ localStorage.removeItem(k); });
   function fim() {
-    alert('\u2705 Reset OK!\n\nEntre com:\n  camila / 123456\n  admin / 123456\n  derikRamos / 123456');
+    alert('\u2705 Feito!\n\nLogins disponíveis:\n  camila / 123456\n  admin / 123456\n  derikRamos / 123456');
     location.reload(true);
   }
   try {
@@ -22941,7 +24261,7 @@ function _resetEmergencia() {
           var tx = db2.transaction('auth_users','readwrite');
           tx.objectStore('auth_users').clear();
           tx.oncomplete = function(){ db2.close(); fim(); };
-          tx.onerror = function(){ db2.close(); fim(); };
+          tx.onerror    = function(){ db2.close(); fim(); };
         } else { db2.close(); fim(); }
       };
       r2.onerror = function(){ fim(); };
@@ -22949,35 +24269,29 @@ function _resetEmergencia() {
     r.onerror = function(){ fim(); };
   } catch(e){ fim(); }
 }
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').catch(function(){});
-  });
-}
 var _dPr = null;
 window.addEventListener('beforeinstallprompt', function(e) {
   e.preventDefault(); _dPr = e;
   setTimeout(function(){
-    if (!localStorage.getItem('pwa-ok')) {
-      var b = document.createElement('div');
-      b.id = '_pwab';
-      b.style.cssText = 'position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1a0c06;color:#fff;padding:11px 16px;border-radius:12px;display:flex;align-items:center;gap:10px;z-index:9998;box-shadow:0 8px 30px rgba(0,0,0,.6);font-family:inherit;font-size:.78rem;border:1px solid rgba(245,194,0,.2);max-width:90vw';
-      b.innerHTML = '<span style="font-size:1.3rem">\uD83E\uDD5F</span><div><div style="font-weight:800">Instalar App</div><div style="color:rgba(255,255,255,.5);font-size:.68rem">Offline \u00B7 Tela inicial</div></div><button onclick="window._instPWA()" style="background:#c8181e;color:#fff;border:none;border-radius:7px;padding:7px 12px;font-size:.72rem;font-weight:800;cursor:pointer;font-family:inherit">\uD83D\uDCF2 Instalar</button><button onclick="document.getElementById(\'_pwab\').remove()" style="background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:6px;padding:5px 8px;cursor:pointer">\u2715</button>';
-      document.body.appendChild(b);
-    }
-  }, 8000);
+    if (localStorage.getItem('pwa-ok')) return;
+    var b = document.createElement('div');
+    b.id = '_pwab';
+    b.style.cssText = 'position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:#1a0c06;color:#fff;padding:12px 16px;border-radius:14px;display:flex;align-items:center;gap:10px;z-index:9998;box-shadow:0 8px 32px rgba(0,0,0,.65);font-family:inherit;font-size:.78rem;border:1px solid rgba(245,194,0,.2);max-width:min(360px,90vw)';
+    b.innerHTML = '<span style="font-size:1.4rem;flex-shrink:0">\uD83E\uDD5F</span><div style="flex:1"><div style="font-weight:800;font-size:.82rem">Instalar App</div><div style="color:rgba(255,255,255,.5);font-size:.68rem">Acesso offline · Tela inicial</div></div><button onclick="window._instPWA()" style="background:#c8181e;color:#fff;border:none;border-radius:8px;padding:8px 13px;font-size:.74rem;font-weight:800;cursor:pointer;font-family:inherit;flex-shrink:0">\uD83D\uDCF2 Instalar</button><button onclick="this.closest('#_pwab').remove()" style="background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:6px;padding:6px 9px;cursor:pointer;font-family:inherit;flex-shrink:0">\u2715</button>';
+    document.body.appendChild(b);
+  }, 12000);
 });
-window._instPWA = function(){
+window._instPWA = function() {
   if (!_dPr) return;
   _dPr.prompt();
-  _dPr.userChoice.then(function(r){
-    if (r.outcome==='accepted'){var e=document.getElementById('_pwab');if(e)e.remove();}
-    _dPr=null;
+  _dPr.userChoice.then(function(r) {
+    if (r.outcome === 'accepted') { var e = document.getElementById('_pwab'); if (e) e.remove(); }
+    _dPr = null;
   });
 };
-window.addEventListener('appinstalled',function(){
-  localStorage.setItem('pwa-ok','1');_dPr=null;
-  if(typeof showToast==='function')showToast('\u2705 App instalado!','ok');
+window.addEventListener('appinstalled', function() {
+  localStorage.setItem('pwa-ok','1'); _dPr = null;
+  if (typeof showToast === 'function') showToast('\u2705 App instalado!','ok');
 });
 </script>
 
